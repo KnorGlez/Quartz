@@ -1,6 +1,5 @@
 
 
-
 <bean id="QuartzManageBean" class="mx.gob.sat.sait.buzon.managebean.notificaciones.QuartzManageBean" />
 
   <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
