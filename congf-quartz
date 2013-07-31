@@ -1,0 +1,23 @@
+
+
+
+<bean id="QuartzManageBean" class="mx.gob.sat.sait.buzon.managebean.notificaciones.QuartzManageBean" />
+
+  <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	
+		<property name="targetObject" ref="QuartzManageBean" />
+		<property name="targetMethod" value="updateAfterFiveDays" />
+		<property name="concurrent" value="false"/>
+	</bean>
+
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail" />
+		 Se lanza la tarea todos los dias 
+		<property name="cronExpression" value="* 6 17 * * ?" />
+	</bean>
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<ref bean="cronTrigger" />
+		</property>
+	</bean>
